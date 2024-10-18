@@ -1,0 +1,18 @@
+[project]
+name = "sqlite2llm"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "apsw>=3.46.1.0",
+    "openai>=1.52.0",
+    "pydantic>=2.9.2",
+    "python-dotenv>=1.0.1",
+    "requests>=2.32.3",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "ruff>=0.7.0",
+]
