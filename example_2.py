@@ -1,8 +1,6 @@
 import json
-from traceback import print_list
 from typing import List, Type
 import apsw
-import apsw.ext
 import openai
 import os
 from dotenv import load_dotenv

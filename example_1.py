@@ -1,5 +1,4 @@
 import apsw
-import apsw.ext
 import openai
 import os
 from dotenv import load_dotenv
@@ -7,7 +6,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
 
 def prompt(*args) -> str:
     text = args[0]
@@ -36,10 +34,13 @@ def main():
     cursor.execute(
         "INSERT INTO texts (content) VALUES ('SQLite is a C-language library that implements a small, fast, self-contained, high-reliability, full-featured, SQL database engine.')"
     )
+    cursor.execute(
+        "INSERT INTO texts (content) VALUES ('Python is an interpreted high-level general-purpose programming language. It was created by Guido van Rossum and first released in 1989')"
+    )
 
     result = cursor.execute(
-        "SELECT prompt('Summarize my text: ' || content) FROM texts"
-    ).fetchone()[0]
+        "SELECT prompt('Which programming language is in this text: ' || content) FROM texts"
+    ).fetchall()
     print("Summary:", result)
 
 
